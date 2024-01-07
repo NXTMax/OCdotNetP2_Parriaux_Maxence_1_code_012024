@@ -32,11 +32,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         /// <summary>
         /// Get all products from the inventory
         /// </summary>
-        public Product[] GetAllProducts()
-        {
-            List<Product> list = _products.Where(p => p.Stock > 0).OrderBy(p => p.Name).ToList();
-            return list.ToArray();
-        }
+        public List<Product> GetAllProducts() => _products.Where(p => p.Stock > 0).OrderBy(p => p.Name).ToList();
 
         /// <summary>
         /// Update the stock of a product in the inventory by its id
