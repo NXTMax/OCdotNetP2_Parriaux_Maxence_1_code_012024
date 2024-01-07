@@ -20,7 +20,15 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>//
         public void AddItem(Product product, int quantity)
         {
-            // TODO implement the method
+            // if the product is already in the cart, increment its quantity
+            if (Lines.Any(l => l.Product.Id == product.Id))
+            {
+                Lines.Where(l => l.Product.Id == product.Id).First().Quantity += quantity;
+            }
+            else // add the product to the cart
+            {
+                _lines.Add(new CartLine { Product = product, Quantity = quantity });
+            }
         }
 
         /// <summary>
