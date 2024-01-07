@@ -11,16 +11,9 @@ namespace P2FixAnAppDotNetCode.Models
         /// <summary>
         /// Read-only property for dispaly only
         /// </summary>
-        public IEnumerable<CartLine> Lines => GetCartLineList();
+        public IEnumerable<CartLine> Lines { get { return _lines; } }
 
-        /// <summary>
-        /// Return the actual cartline list
-        /// </summary>
-        /// <returns></returns>
-        private List<CartLine> GetCartLineList()
-        {
-            return new List<CartLine>();
-        }
+        private List<CartLine> _lines = new List<CartLine>();
 
         /// <summary>
         /// Adds a product in the cart or increment its quantity in the cart if already added
@@ -34,7 +27,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// Removes a product form the cart
         /// </summary>
         public void RemoveLine(Product product) =>
-            GetCartLineList().RemoveAll(l => l.Product.Id == product.Id);
+            _lines.RemoveAll(l => l.Product.Id == product.Id);
 
         /// <summary>
         /// Get total value of a cart
@@ -76,8 +69,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public void Clear()
         {
-            List<CartLine> cartLines = GetCartLineList();
-            cartLines.Clear();
+            _lines.Clear();
         }
     }
 
