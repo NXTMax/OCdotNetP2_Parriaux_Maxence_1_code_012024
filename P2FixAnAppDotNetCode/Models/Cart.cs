@@ -60,8 +60,9 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public Product FindProductInCartLines(int productId)
         {
-            // TODO implement the method
-            return null;
+            if (Lines.Any(l => l.Product.Id == productId))
+                return Lines.Where(l => l.Product.Id == productId).First().Product;
+            else return null;
         }
 
         /// <summary>
