@@ -50,8 +50,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public double GetAverageValue()
         {
-            // TODO implement the method
-            return 0.0;
+            return GetTotalValue() / _lines.Sum(l => l.Quantity);
         }
 
         /// <summary>
