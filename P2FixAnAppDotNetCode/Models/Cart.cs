@@ -21,9 +21,9 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // if the product is already in the cart, increment its quantity
-            if (Lines.Any(l => l.Product.Id == product.Id))
+            if (_lines.Any(l => l.Product.Id == product.Id))
             {
-                Lines.Where(l => l.Product.Id == product.Id).First().Quantity += quantity;
+                _lines.Where(l => l.Product.Id == product.Id).First().Quantity += quantity;
             }
             else // add the product to the cart
             {
@@ -58,8 +58,8 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public Product FindProductInCartLines(int productId)
         {
-            if (Lines.Any(l => l.Product.Id == productId))
-                return Lines.Where(l => l.Product.Id == productId).First().Product;
+            if (_lines.Any(l => l.Product.Id == productId))
+                return _lines.Where(l => l.Product.Id == productId).First().Product;
             else return null;
         }
 
@@ -68,7 +68,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public CartLine GetCartLineByIndex(int index)
         {
-            return Lines.ToArray()[index];
+            return _lines.ToArray()[index];
         }
 
         /// <summary>
