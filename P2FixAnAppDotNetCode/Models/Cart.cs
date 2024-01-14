@@ -9,7 +9,7 @@ namespace P2FixAnAppDotNetCode.Models
     public class Cart : ICart
     {
         /// <summary>
-        /// Read-only property for dispaly only
+        /// Read-only property for display only
         /// </summary>
         public IEnumerable<CartLine> Lines => _lines;
 
@@ -60,7 +60,7 @@ namespace P2FixAnAppDotNetCode.Models
         }
 
         /// <summary>
-        /// Get a specifid cartline by its index
+        /// Get a specific cartline by its index
         /// </summary>
         public CartLine GetCartLineByIndex(int index) =>
             _lines.ToArray()[index];
