@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
+using System.Collections.Generic;
 
 namespace P2FixAnAppDotNetCode.Models.Services
 {
@@ -8,6 +9,14 @@ namespace P2FixAnAppDotNetCode.Models.Services
     /// </summary>
     public class LanguageService : ILanguageService
     {
+
+        public static readonly Dictionary<string, string> Languages = new Dictionary<string, string>()
+        {
+            { "English", "en" },
+            { "French", "fr" },
+            { "Spanish", "es" }
+        };
+
         /// <summary>
         /// Set the UI language
         /// </summary>
@@ -20,14 +29,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// <summary>
         /// Set the culture
         /// </summary>
-        public string SetCulture(string language)
-        {
-            string culture = "";
-            // TODO complete the code 
-            // Default language is "en", french is "fr" and spanish is "es".
-            
-            return culture;
-        }
+        public string SetCulture(string language) => Languages[language];
 
         /// <summary>
         /// Update the culture cookie
